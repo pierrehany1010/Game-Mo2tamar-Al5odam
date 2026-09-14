@@ -16,14 +16,13 @@
         }
 
         :root {
-            --deep-blue: #213448;
-            --blue: #547792;
-            --light-blue: #94B4C1;
-            --cream: #EAE0CF;
+            --deep-blue: #0A2947;
+            --cream: #F3E4C9;
+            --brown: #8B5E3C;
+            --sage: #D3D4C0;
 
-            --cream-light: #F5F0E7;
-            --text-dark: #213448;
-            --text-light: #EAE0CF;
+            --text-dark: #0A2947;
+            --text-light: #F3E4C9;
         }
 
         /* ================================
@@ -34,9 +33,9 @@
             background:
                 radial-gradient(
                     circle at top,
-                    #547792 0%,
-                    #213448 45%,
-                    #172636 100%
+                    #163c63 0%,
+                    #0A2947 50%,
+                    #051525 100%
                 );
 
             color: var(--text-light);
@@ -64,17 +63,17 @@
             background:
                 linear-gradient(
                     145deg,
-                    #547792,
-                    #213448
+                    #0F3860,
+                    #0A2947
                 );
 
-            border: 3px solid var(--light-blue);
+            border: 3px solid var(--sage);
 
             border-radius: 24px;
 
             box-shadow:
-                0 20px 60px rgba(0, 0, 0, 0.55),
-                inset 0 0 40px rgba(234, 224, 207, 0.06);
+                0 20px 60px rgba(0, 0, 0, 0.6),
+                inset 0 0 40px rgba(243, 228, 201, 0.05);
 
             position: relative;
 
@@ -94,7 +93,7 @@
 
             inset: 10px;
 
-            border: 1px solid rgba(148, 180, 193, 0.35);
+            border: 1px solid rgba(211, 212, 192, 0.35);
 
             border-radius: 17px;
 
@@ -156,7 +155,7 @@
         .category-badge {
             font-size: 1.25rem;
 
-            color: var(--light-blue);
+            color: var(--sage);
 
             font-weight: bold;
 
@@ -174,11 +173,11 @@
             background:
                 linear-gradient(
                     135deg,
-                    #547792,
-                    #213448
+                    #8B5E3C,
+                    #0A2947
                 );
 
-            border: 2px solid var(--light-blue);
+            border: 2px solid var(--sage);
 
             padding: 11px 25px;
 
@@ -188,7 +187,7 @@
 
             font-weight: bold;
 
-            color: var(--cream-light);
+            color: var(--cream);
 
             box-shadow:
                 0 5px 15px rgba(0, 0, 0, 0.35),
@@ -199,6 +198,91 @@
             color: var(--cream);
         }
 
+        .score-board.team-score-board {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-size: 1.05rem;
+        }
+
+        .score-board.team-score-board .team-score {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+        }
+
+        .score-board.team-score-board .score-divider {
+            width: 1px;
+            height: 20px;
+            background: rgba(243, 228, 201, 0.4);
+        }
+
+        /* ================================
+        TEAM CHOICE MODAL
+        ================================ */
+
+        .modal-overlay {
+            display: none;
+
+            position: fixed;
+            inset: 0;
+
+            background: rgba(5, 21, 37, 0.72);
+
+            align-items: center;
+            justify-content: center;
+
+            z-index: 50;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-box {
+            background:
+                linear-gradient(
+                    145deg,
+                    #0F3860,
+                    #0A2947
+                );
+
+            border: 2px solid var(--sage);
+
+            border-radius: 18px;
+
+            padding: 35px 30px;
+
+            width: 90%;
+            max-width: 420px;
+
+            text-align: center;
+
+            box-shadow:
+                0 20px 50px rgba(0, 0, 0, 0.6);
+
+            animation: fadeIn 0.25s ease-in-out;
+        }
+
+        .modal-box h3 {
+            color: var(--sage);
+
+            font-size: 1.35rem;
+
+            margin-bottom: 22px;
+
+            line-height: 1.5;
+        }
+
+        .modal-box .modal-buttons {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 14px;
+        }
+
         /* ================================
         GENERAL BUTTONS
         ================================ */
@@ -207,13 +291,13 @@
             background:
                 linear-gradient(
                     145deg,
-                    #EAE0CF,
-                    #D9CEBC
+                    #F3E4C9,
+                    #E0CFB3
                 );
 
             color: var(--text-dark);
 
-            border: 2px solid var(--light-blue);
+            border: 2px solid var(--sage);
 
             padding: 15px 30px;
 
@@ -236,6 +320,8 @@
                 0 5px 12px rgba(0, 0, 0, 0.3);
 
             text-align: center;
+
+            position: relative;
         }
 
         .btn:hover:not(:disabled) {
@@ -244,17 +330,17 @@
             background:
                 linear-gradient(
                     145deg,
-                    var(--light-blue),
-                    var(--blue)
+                    var(--brown),
+                    #6B452A
                 );
 
-            color: var(--deep-blue);
+            color: var(--cream);
 
             border-color: var(--cream);
 
             box-shadow:
-                0 8px 18px rgba(33, 52, 72, 0.5),
-                0 0 15px rgba(148, 180, 193, 0.45);
+                0 8px 18px rgba(10, 41, 71, 0.5),
+                0 0 15px rgba(211, 212, 192, 0.35);
         }
 
         .btn:active:not(:disabled) {
@@ -266,11 +352,11 @@
 
             cursor: not-allowed;
 
-            border-color: #547080;
+            border-color: #535E68;
 
-            background: #344C60;
+            background: #25394C;
 
-            color: #A9B9C2;
+            color: #8C9CA8;
 
             box-shadow: none;
         }
@@ -284,7 +370,7 @@
 
             padding: 20px 60px;
 
-            border-color: var(--light-blue);
+            border-color: var(--sage);
 
             border-radius: 15px;
         }
@@ -293,17 +379,17 @@
             background:
                 linear-gradient(
                     145deg,
-                    var(--light-blue),
-                    var(--blue)
+                    var(--brown),
+                    #6B452A
                 );
 
-            color: var(--deep-blue);
+            color: var(--cream);
 
             border-color: var(--cream);
 
             box-shadow:
-                0 10px 25px rgba(33, 52, 72, 0.5),
-                0 0 20px rgba(148, 180, 193, 0.5);
+                0 10px 25px rgba(10, 41, 71, 0.5),
+                0 0 20px rgba(211, 212, 192, 0.4);
         }
 
         /* ================================
@@ -313,11 +399,11 @@
         .game-title {
             font-size: 3.8rem;
 
-            color: var(--light-blue);
+            color: var(--sage);
 
             text-shadow:
                 0 3px 15px rgba(0, 0, 0, 0.5),
-                0 0 25px rgba(148, 180, 193, 0.25);
+                0 0 25px rgba(211, 212, 192, 0.2);
 
             margin-top: 150px;    
             margin-bottom: 45px;
@@ -328,7 +414,25 @@
         }
 
         .game-title span {
-            color: var(--cream-light) !important;
+            color: var(--cream) !important;
+        }
+
+        /* ================================
+        ROUNDS SCREEN
+        ================================ */
+
+        .rounds-list {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 20px;
+
+            width: 100%;
+
+            max-width: 450px;
+
+            margin-top: 30px;
         }
 
         /* ================================
@@ -369,15 +473,15 @@
         }
 
         .btn-easy {
-            border-color: var(--light-blue);
+            border-color: var(--sage);
         }
 
         .btn-medium {
-            border-color: var(--blue);
+            border-color: var(--brown);
         }
 
         .btn-hard {
-            border-color: var(--deep-blue);
+            border-color: #5C3E27;
         }
 
         /* ================================
@@ -392,7 +496,7 @@
                     #2E7D32
                 ) !important;
 
-            color: #EAE0CF !important;
+            color: #F3E4C9 !important;
 
             border-color: #81C784 !important;
 
@@ -415,7 +519,7 @@
                     #F9A825
                 ) !important;
 
-            color: #213448 !important;
+            color: #0A2947 !important;
 
             border-color: #FFE082 !important;
 
@@ -438,7 +542,7 @@
                     #C62828
                 ) !important;
 
-            color: #EAE0CF !important;
+            color: #F3E4C9 !important;
 
             border-color: #EF9A9A !important;
 
@@ -454,11 +558,11 @@
         ================================ */
 
         .btn.used {
-            background: #344C60 !important;
+            background: #25394C !important;
 
-            color: #A9B9C2 !important;
+            color: #8C9CA8 !important;
 
-            border-color: #547080 !important;
+            border-color: #535E68 !important;
 
             box-shadow:
                 inset 0 3px 10px rgba(0, 0, 0, 0.5) !important;
@@ -469,11 +573,11 @@
         }
 
         .btn.used:hover {
-            background: #344C60 !important;
+            background: #25394C !important;
 
-            color: #A9B9C2 !important;
+            color: #8C9CA8 !important;
 
-            border-color: #547080 !important;
+            border-color: #535E68 !important;
 
             box-shadow:
                 inset 0 3px 10px rgba(0, 0, 0, 0.5) !important;
@@ -491,13 +595,13 @@
             background:
                 linear-gradient(
                     145deg,
-                    #F5F0E7,
-                    #EAE0CF
+                    #F3E4C9,
+                    #E0CFB3
                 );
 
             color: var(--text-dark);
 
-            border: 2px solid var(--light-blue);
+            border: 2px solid var(--sage);
 
             border-radius: 17px;
 
@@ -539,7 +643,7 @@
 
             font-weight: bold;
 
-            color: var(--light-blue);
+            color: var(--sage);
 
             margin-bottom: 8px;
 
@@ -552,9 +656,9 @@
 
             height: 13px;
 
-            background: #172636;
+            background: #051525;
 
-            border: 1px solid var(--blue);
+            border: 1px solid var(--brown);
 
             border-radius: 10px;
 
@@ -572,14 +676,14 @@
             background:
                 linear-gradient(
                     90deg,
-                    #547792,
-                    #94B4C1
+                    #8B5E3C,
+                    #D3D4C0
                 );
 
             transition: width 1s linear;
 
             box-shadow:
-                0 0 8px rgba(148, 180, 193, 0.45);
+                0 0 8px rgba(211, 212, 192, 0.45);
         }
 
         /* ================================
@@ -603,13 +707,13 @@
             background:
                 linear-gradient(
                     145deg,
-                    #547792,
-                    #213448
+                    #163c63,
+                    #0A2947
                 );
 
-            color: var(--cream-light);
+            color: var(--cream);
 
-            border-color: var(--light-blue);
+            border-color: var(--sage);
 
             min-height: 65px;
 
@@ -620,17 +724,17 @@
             background:
                 linear-gradient(
                     145deg,
-                    var(--light-blue),
-                    var(--blue)
+                    var(--brown),
+                    #6B452A
                 );
 
-            color: var(--deep-blue);
+            color: var(--cream);
 
             border-color: var(--cream);
 
             box-shadow:
-                0 6px 15px rgba(33, 52, 72, 0.4),
-                0 0 12px rgba(148, 180, 193, 0.4);
+                0 6px 15px rgba(10, 41, 71, 0.4),
+                0 0 12px rgba(211, 212, 192, 0.35);
 
             transform: translateY(-3px);
         }
@@ -651,7 +755,7 @@
                 #81C784 !important;
 
             color:
-                #EAE0CF !important;
+                #F3E4C9 !important;
 
             box-shadow:
                 0 0 18px rgba(76, 175, 80, 0.55);
@@ -675,7 +779,7 @@
                 #EF9A9A !important;
 
             color:
-                #EAE0CF !important;
+                #F3E4C9 !important;
 
             box-shadow:
                 0 0 18px rgba(239, 83, 80, 0.55);
@@ -708,7 +812,7 @@
 
             margin-bottom: 10px;
 
-            color: var(--cream-light);
+            color: var(--cream);
 
             text-shadow:
                 0 2px 8px rgba(0, 0, 0, 0.4);
@@ -776,11 +880,66 @@
 
             <button
                 class="btn btn-large"
-                onclick="navigateTo('categories-screen')">
+                onclick="navigateTo('rounds-screen')">
 
                Start
 
             </button>
+
+        </div>
+
+
+        <!-- ================================
+        ROUNDS SCREEN
+        ================================ -->
+
+        <div id="rounds-screen" class="screen">
+
+            <div class="top-bar">
+
+                <span class="category-badge">
+                    اختر الجولة
+                </span>
+
+                <div class="score-board team-score-board">
+
+                    <span class="team-score">
+                        🔵 الفريق الأول: <span class="score-val score-team1">0</span>
+                    </span>
+
+                    <span class="score-divider"></span>
+
+                    <span class="team-score">
+                        🔴 الفريق الثاني: <span class="score-val score-team2">0</span>
+                    </span>
+
+                </div>
+
+            </div>
+
+            <h2 class="screen-title">
+                اختر الجولة
+            </h2>
+
+            <div class="rounds-list">
+
+                <button
+                    class="btn btn-large"
+                    onclick="selectRound('round1')">
+
+                    الجولة الأولى 
+
+                </button>
+
+                <button
+                    class="btn btn-large"
+                    onclick="selectRound('round2')">
+
+                    الجولة الثانية 
+
+                </button>
+
+            </div>
 
         </div>
 
@@ -793,16 +952,20 @@
 
             <div class="top-bar">
 
-                <span class="category-badge">
+                <span class="category-badge" id="round-badge">
                     اختر الفئة
                 </span>
 
-                <div class="score-board">
+                <div class="score-board team-score-board">
 
-                    النقاط:
+                    <span class="team-score">
+                        🔵 الفريق الأول: <span class="score-val score-team1">0</span>
+                    </span>
 
-                    <span class="score-val">
-                        0
+                    <span class="score-divider"></span>
+
+                    <span class="team-score">
+                        🔴 الفريق الثاني: <span class="score-val score-team2">0</span>
                     </span>
 
                 </div>
@@ -817,6 +980,15 @@
                 class="grid-container grid-categories"
                 id="categories-grid">
             </div>
+
+            <button
+                class="btn"
+                style="margin-top: 30px;"
+                onclick="returnToRounds()">
+
+                العودة للجولات
+
+            </button>
 
         </div>
 
@@ -837,12 +1009,16 @@
 
                 </span>
 
-                <div class="score-board">
+                <div class="score-board team-score-board">
 
-                    النقاط:
+                    <span class="team-score">
+                        🔵 الفريق الأول: <span class="score-val score-team1">0</span>
+                    </span>
 
-                    <span class="score-val">
-                        0
+                    <span class="score-divider"></span>
+
+                    <span class="team-score">
+                        🔴 الفريق الثاني: <span class="score-val score-team2">0</span>
                     </span>
 
                 </div>
@@ -909,12 +1085,16 @@
 
                 </span>
 
-                <div class="score-board">
+                <div class="score-board team-score-board">
 
-                    النقاط:
+                    <span class="team-score">
+                        🔵 الفريق الأول: <span class="score-val score-team1">0</span>
+                    </span>
 
-                    <span class="score-val">
-                        0
+                    <span class="score-divider"></span>
+
+                    <span class="team-score">
+                        🔴 الفريق الثاني: <span class="score-val score-team2">0</span>
                     </span>
 
                 </div>
@@ -1001,355 +1181,434 @@
     </div>
 
 
+    <!-- ================================
+    TEAM CHOICE MODAL
+    ================================ -->
+
+    <div id="team-choice-modal" class="modal-overlay">
+
+        <div class="modal-box">
+
+            <h3>
+                إجابة صحيحة! 🎉<br>
+                أضف <span id="modal-points">0</span> نقطة إلى:
+            </h3>
+
+            <div class="modal-buttons">
+
+                <button class="btn btn-large" onclick="assignPoints(1)">
+                    🔵 الفريق الأول
+                </button>
+
+                <button class="btn btn-large" onclick="assignPoints(2)">
+                    🔴 الفريق الثاني
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
     <script>
 
         /* ================================
-        GAME DATABASE
+        GAME DATABASE (ROUNDS STRUCTURE)
         ================================ */
 
-        const gameData = {
+        const gameDataRounds = {
 
-            "معلومات عامة": {
+            round1: {
 
-                easy: [
-                    {
-                        q: "ما هي عاصمة فرنسا؟",
-                        options: [
-                            "لندن",
-                            "باريس",
-                            "روما",
-                            "مدريد"
-                        ],
-                        ans: 1
-                    }
-                ],
+                "معلومات عامة": {
+                    easy: [
+                        {
+                            q: "ما هي عاصمة فرنسا؟",
+                            options: ["لندن", "باريس", "روما", "مدريد"],
+                            ans: 1
+                        }
+                    ],
+                    medium: [
+                        {
+                            q: "ما هو العنصر الكيميائي الذي رمزه O؟",
+                            options: ["ذهب", "أكسجين", "حديد", "فضة"],
+                            ans: 1
+                        }
+                    ],
+                    hard: [
+                        {
+                            q: "ما هو اسم أعمق نقطة معروفة في محيطات العالم؟",
+                            options: ["خندق ماريانا", "خندق بيرو-تشيلي", "خندق تونغا", "خندق اليابان"],
+                            ans: 0
+                        }
+                    ]
+                },
 
-                medium: [
-                    {
-                        q: "ما هو العنصر الكيميائي الذي رمزه O؟",
-                        options: [
-                            "ذهب",
-                            "أكسجين",
-                            "حديد",
-                            "فضة"
-                        ],
-                        ans: 1
-                    }
-                ],
+                "سياسة": {
+                    easy: [
+                        {
+                            q: "ما اسم السلطة التي تضع القوانين في الدولة عادةً؟",
+                            options: ["التشريعية", "التنفيذية", "القضائية", "الإعلامية"],
+                            ans: 0
+                        }
+                    ],
+                    medium: [
+                        {
+                            q: "ما اسم المنظمة الدولية التي تأسست عام 1945؟",
+                            options: ["الاتحاد الأوروبي", "الأمم المتحدة", "الناتو", "الجامعة العربية"],
+                            ans: 1
+                        }
+                    ],
+                    hard: [
+                        {
+                            q: "أي معاهدة أنهت الحرب العالمية الأولى رسمياً مع ألمانيا؟",
+                            options: ["فرساي", "لوزان", "باريس", "روما"],
+                            ans: 0
+                        }
+                    ]
+                },
 
-                hard: [
-                    {
-                        q: "ما هو اسم أعمق نقطة معروفة في محيطات العالم؟",
-                        options: [
-                            "خندق ماريانا",
-                            "خندق بيرو-تشيلي",
-                            "خندق تونغا",
-                            "خندق اليابان"
-                        ],
-                        ans: 0
-                    }
-                ]
+                "أعلام الدول": {
+                    easy: [
+                        {
+                            q: "أي دولة يظهر على علمها ورقة شجر القيقب؟",
+                            options: ["كندا", "أستراليا", "اليابان", "البرازيل"],
+                            ans: 0
+                        }
+                    ],
+                    medium: [
+                        {
+                            q: "أي دولة علمها يتكون من صليب أبيض على خلفية حمراء؟",
+                            options: ["الدنمارك", "سويسرا", "إنجلترا", "النرويج"],
+                            ans: 1
+                        }
+                    ],
+                    hard: [
+                        {
+                            q: "أي دولة لها علم غير مستطيل الشكل؟",
+                            options: ["نيبال", "الهند", "بيرو", "تشيلي"],
+                            ans: 0
+                        }
+                    ]
+                },
+
+                "رياضة": {
+                    easy: [
+                        {
+                            q: "كم لاعباً يبدأ به فريق كرة القدم المباراة داخل الملعب؟",
+                            options: ["9", "10", "11", "12"],
+                            ans: 2
+                        }
+                    ],
+                    medium: [
+                        {
+                            q: "كم حلقة في شعار الألعاب الأولمبية؟",
+                            options: ["4", "5", "6", "7"],
+                            ans: 1
+                        }
+                    ],
+                    hard: [
+                        {
+                            q: "من يحمل الرقم القياسي العالمي لسباق 100 متر للرجال؟",
+                            options: ["يوسين بولت", "تايسون غاي", "كارل لويس", "جاستن غاتلين"],
+                            ans: 0
+                        }
+                    ]
+                },
+
+                "فنون": {
+                    easy: [
+                        {
+                            q: "من رسم لوحة الموناليزا؟",
+                            options: ["فان جوخ", "ليوناردو دا فينشي", "بيكاسو", "رامبرانت"],
+                            ans: 1
+                        }
+                    ],
+                    medium: [
+                        {
+                            q: "من رسم لوحة ليلة النجوم؟",
+                            options: ["فان جوخ", "بيكاسو", "دالي", "مونيه"],
+                            ans: 0
+                        }
+                    ],
+                    hard: [
+                        {
+                            q: "من نحت تمثال المفكر؟",
+                            options: ["رودان", "مايكل أنجلو", "دوناتيلو", "برنيني"],
+                            ans: 0
+                        }
+                    ]
+                },
+
+                "آثار": {
+                    easy: [
+                        {
+                            q: "في أي دولة توجد أهرامات الجيزة؟",
+                            options: ["مصر", "العراق", "اليونان", "المكسيك"],
+                            ans: 0
+                        }
+                    ],
+                    medium: [
+                        {
+                            q: "ما اسم المدينة الأثرية المنحوتة في الصخر في الأردن؟",
+                            options: ["البتراء", "تدمر", "بابل", "أور"],
+                            ans: 0
+                        }
+                    ],
+                    hard: [
+                        {
+                            q: "أي حضارة ارتبطت بحدائق بابل المعلقة في المصادر القديمة؟",
+                            options: ["البابلية", "المينوية", "الرومانية", "المايا"],
+                            ans: 0
+                        }
+                    ]
+                },
+
+                "دينية": {
+                    easy: [
+                        {
+                            q: "كم إنجيلاً في العهد الجديد؟",
+                            options: ["2", "3", "4", "5"],
+                            ans: 2
+                        }
+                    ],
+                    medium: [
+                        {
+                            q: "من هو النبي الذي ابتلعته الحوت بحسب السفر المعروف باسمه؟",
+                            options: ["إشعياء", "يونان", "إرميا", "دانيال"],
+                            ans: 1
+                        }
+                    ],
+                    hard: [
+                        {
+                            q: "ما اسم المجمع المسكوني الذي انعقد سنة 325م؟",
+                            options: ["أفسس", "خلقيدونية", "نيقية", "القسطنطينية"],
+                            ans: 2
+                        }
+                    ]
+                },
+
+                "آية أو كلمة معكوسة": {
+                    easy: [
+                        {
+                            q: "اقلب كلمة «حَبّ» حرفياً: ما الشكل الناتج؟",
+                            options: ["بّح", "بحّ", "حّب", "ببح"],
+                            ans: 0
+                        }
+                    ],
+                    medium: [
+                        {
+                            q: "إذا عكسنا «سدق» حرفياً، تصبح:",
+                            options: ["قدس", "قسد", "دقس", "سقد"],
+                            ans: 0
+                        }
+                    ],
+                    hard: [
+                        {
+                            q: "عند عكس الحروف في كلمة «قدس»، ما الناتج؟",
+                            options: ["سدق", "دقس", "قسد", "سقد"],
+                            ans: 0
+                        }
+                    ]
+                }
+
             },
 
+            round2: {
 
-            "سياسة": {
+                "معلومات عامة": {
+                    easy: [
+                        {
+                            q: "ما هي أطول نهر في العالم؟",
+                            options: ["الأمازون", "النيل", "الميسيسيبي", "الراين"],
+                            ans: 1
+                        }
+                    ],
+                    medium: [
+                        {
+                            q: "ما هو أكبر كوكب في المجموعة الشمسية؟",
+                            options: ["الأرض", "زحل", "المشتري", "المريخ"],
+                            ans: 2
+                        }
+                    ],
+                    hard: [
+                        {
+                            q: "ما هي عاصمة أستراليا؟",
+                            options: ["سيدني", "ملبورن", "كانبرا", "بريزبان"],
+                            ans: 2
+                        }
+                    ]
+                },
 
-                easy: [
-                    {
-                        q: "ما اسم السلطة التي تضع القوانين في الدولة عادةً؟",
-                        options: [
-                            "التشريعية",
-                            "التنفيذية",
-                            "القضائية",
-                            "الإعلامية"
-                        ],
-                        ans: 0
-                    }
-                ],
+                "سياسة": {
+                    easy: [
+                        {
+                            q: "أين يقع مقر مجلس الأمن التابع للأمم المتحدة؟",
+                            options: ["جنيف", "نيويورك", "باريس", "لندن"],
+                            ans: 1
+                        }
+                    ],
+                    medium: [
+                        {
+                            q: "ما هي العاصمة الإدارية للاتحاد الأوروبي؟",
+                            options: ["بروكسل", "برلين", "مدريد", "ستراسبورغ"],
+                            ans: 0
+                        }
+                    ],
+                    hard: [
+                        {
+                            q: "في أي عام تم توقيع إعلان الاستقلال الأمريكي؟",
+                            options: ["1776", "1789", "1804", "1765"],
+                            ans: 0
+                        }
+                    ]
+                },
 
-                medium: [
-                    {
-                        q: "ما اسم المنظمة الدولية التي تأسست عام 1945؟",
-                        options: [
-                            "الاتحاد الأوروبي",
-                            "الأمم المتحدة",
-                            "الناتو",
-                            "الجامعة العربية"
-                        ],
-                        ans: 1
-                    }
-                ],
+                "أعلام الدول": {
+                    easy: [
+                        {
+                            q: "ما هي الدولة التي يظهر التنين على علمها؟",
+                            options: ["بوتان", "الصين", "اليابان", "مصر"],
+                            ans: 0
+                        }
+                    ],
+                    medium: [
+                        {
+                            q: "أي دولة علمها أحمر بالكامل وتتوسطه نجمة خضراء؟",
+                            options: ["تونس", "المغرب", "الجزائر", "تركيا"],
+                            ans: 1
+                        }
+                    ],
+                    hard: [
+                        {
+                            q: "ما الدولة الوحيدة التي يتضمن علمها أسلحة حديثة (بندقية AK-47)؟",
+                            options: ["موزمبيق", "أنغولا", "زيمبابوي", "أوغندا"],
+                            ans: 0
+                        }
+                    ]
+                },
 
-                hard: [
-                    {
-                        q: "أي معاهدة أنهت الحرب العالمية الأولى رسمياً مع ألمانيا؟",
-                        options: [
-                            "فرساي",
-                            "لوزان",
-                            "باريس",
-                            "روما"
-                        ],
-                        ans: 0
-                    }
-                ]
-            },
+                "رياضة": {
+                    easy: [
+                        {
+                            q: "كم عدد أفراد فريق كرة السلة داخل الملعب؟",
+                            options: ["5", "6", "7", "11"],
+                            ans: 0
+                        }
+                    ],
+                    medium: [
+                        {
+                            q: "أي دولة فازت بأول بطولة كأس عالم لكرة القدم عام 1930؟",
+                            options: ["البرازيل", "الأرجنتين", "أوروغواي", "إيطاليا"],
+                            ans: 2
+                        }
+                    ],
+                    hard: [
+                        {
+                            q: "ما هي الدولة الأكثر تفوقاً في تاريخ بطولات كأس العالم لكرة المضرب (ديفيز)؟",
+                            options: ["إسبانيا", "الولايات المتحدة", "أستراليا", "فرنسا"],
+                            ans: 1
+                        }
+                    ]
+                },
 
+                "فنون": {
+                    easy: [
+                        {
+                            q: "ما هي الآلة الموسيقية التي تحتوي على 88 مفتاحاً؟",
+                            options: ["الكمان", "البيانو", "العود", "القيثارة"],
+                            ans: 1
+                        }
+                    ],
+                    medium: [
+                        {
+                            q: "من صمم برج إيفل في باريس؟",
+                            options: ["غوستاف إيفل", "لو كوربوزييه", "أنطوني غودي", "ميكيلانجيلو"],
+                            ans: 0
+                        }
+                    ],
+                    hard: [
+                        {
+                            q: "من كتب مقطوعة السيمفونية التاسعة الشهيرة رغم فقدانه السمع؟",
+                            options: ["موتسارت", "بيتهوفن", "باخ", "تشايكوفسكي"],
+                            ans: 1
+                        }
+                    ]
+                },
 
-            "أعلام الدول": {
+                "آثار": {
+                    easy: [
+                        {
+                            q: "أين يقع الكولوسيوم الشهير؟",
+                            options: ["أثينا", "روما", "القاهرة", "إسطنبول"],
+                            ans: 1
+                        }
+                    ],
+                    medium: [
+                        {
+                            q: "في أي دولة توجد قلعة «ماتشو بيتشو» الأثرية؟",
+                            options: ["المكسيك", "بيرو", "البرازيل", "كولومبيا"],
+                            ans: 1
+                        }
+                    ],
+                    hard: [
+                        {
+                            q: "ما اسم المعبد الشهير المخصص للآلهة أثينا في اليونان؟",
+                            options: ["البارثينون", "الأكروبوليس", "الكولوسيوم", "معبد الكرنك"],
+                            ans: 0
+                        }
+                    ]
+                },
 
-                easy: [
-                    {
-                        q: "أي دولة يظهر على علمها ورقة شجر القيقب؟",
-                        options: [
-                            "كندا",
-                            "أستراليا",
-                            "اليابان",
-                            "البرازيل"
-                        ],
-                        ans: 0
-                    }
-                ],
+                "دينية": {
+                    easy: [
+                        {
+                            q: "ما اسم الوصية الأولى من الوصايا العشر؟",
+                            options: ["لا تسرق", "أكرم أباك وأمك", "لا يكن لك آلهة أخرى أمامي", "لا تقتل"],
+                            ans: 2
+                        }
+                    ],
+                    medium: [
+                        {
+                            q: "في أي مدينة ولد يسوع المسيح بحسب التقليد المسيحي؟",
+                            options: ["الناصرة", "أورشليم", "بيت لحم", "طبرية"],
+                            ans: 2
+                        }
+                    ],
+                    hard: [
+                        {
+                            q: "أي من الأنبياء يقترن اسمه بمعجزة شق البحر الأحمر؟",
+                            options: ["إبراهيم", "موسى", "داود", "سليمان"],
+                            ans: 1
+                        }
+                    ]
+                },
 
-                medium: [
-                    {
-                        q: "أي دولة علمها يتكون من صليب أبيض على خلفية حمراء؟",
-                        options: [
-                            "الدنمارك",
-                            "سويسرا",
-                            "إنجلترا",
-                            "النرويج"
-                        ],
-                        ans: 1
-                    }
-                ],
+                "آية أو كلمة معكوسة": {
+                    easy: [
+                        {
+                            q: "اقلب كلمة «قَلَم» حرفياً: ما الناتج؟",
+                            options: ["ملق", "لمق", "قمل", "لقم"],
+                            ans: 0
+                        }
+                    ],
+                    medium: [
+                        {
+                            q: "إذا عكسنا حروف كلمة «نُور»، تصبح:",
+                            options: ["رون", "رنو", "ورن", "ونر"],
+                            ans: 0
+                        }
+                    ],
+                    hard: [
+                        {
+                            q: "عند عكس الحروف في كلمة «شَمْس»، ما الناتج؟",
+                            options: ["سمش", "مشش", "شسم", "مشس"],
+                            ans: 0
+                        }
+                    ]
+                }
 
-                hard: [
-                    {
-                        q: "أي دولة لها علم غير مستطيل الشكل؟",
-                        options: [
-                            "نيبال",
-                            "الهند",
-                            "بيرو",
-                            "تشيلي"
-                        ],
-                        ans: 0
-                    }
-                ]
-            },
-
-
-            "رياضة": {
-
-                easy: [
-                    {
-                        q: "كم لاعباً يبدأ به فريق كرة القدم المباراة داخل الملعب؟",
-                        options: [
-                            "9",
-                            "10",
-                            "11",
-                            "12"
-                        ],
-                        ans: 2
-                    }
-                ],
-
-                medium: [
-                    {
-                        q: "كم حلقة في شعار الألعاب الأولمبية؟",
-                        options: [
-                            "4",
-                            "5",
-                            "6",
-                            "7"
-                        ],
-                        ans: 1
-                    }
-                ],
-
-                hard: [
-                    {
-                        q: "من يحمل الرقم القياسي العالمي لسباق 100 متر للرجال؟",
-                        options: [
-                            "يوسين بولت",
-                            "تايسون غاي",
-                            "كارل لويس",
-                            "جاستن غاتلين"
-                        ],
-                        ans: 0
-                    }
-                ]
-            },
-
-
-            "فنون": {
-
-                easy: [
-                    {
-                        q: "من رسم لوحة الموناليزا؟",
-                        options: [
-                            "فان جوخ",
-                            "ليوناردو دا فينشي",
-                            "بيكاسو",
-                            "رامبرانت"
-                        ],
-                        ans: 1
-                    }
-                ],
-
-                medium: [
-                    {
-                        q: "من رسم لوحة ليلة النجوم؟",
-                        options: [
-                            "فان جوخ",
-                            "بيكاسو",
-                            "دالي",
-                            "مونيه"
-                        ],
-                        ans: 0
-                    }
-                ],
-
-                hard: [
-                    {
-                        q: "من نحت تمثال المفكر؟",
-                        options: [
-                            "رودان",
-                            "مايكل أنجلو",
-                            "دوناتيلو",
-                            "برنيني"
-                        ],
-                        ans: 0
-                    }
-                ]
-            },
-
-
-            "آثار": {
-
-                easy: [
-                    {
-                        q: "في أي دولة توجد أهرامات الجيزة؟",
-                        options: [
-                            "مصر",
-                            "العراق",
-                            "اليونان",
-                            "المكسيك"
-                        ],
-                        ans: 0
-                    }
-                ],
-
-                medium: [
-                    {
-                        q: "ما اسم المدينة الأثرية المنحوتة في الصخر في الأردن؟",
-                        options: [
-                            "البتراء",
-                            "تدمر",
-                            "بابل",
-                            "أور"
-                        ],
-                        ans: 0
-                    }
-                ],
-
-                hard: [
-                    {
-                        q: "أي حضارة ارتبطت بحدائق بابل المعلقة في المصادر القديمة؟",
-                        options: [
-                            "البابلية",
-                            "المينوية",
-                            "الرومانية",
-                            "المايا"
-                        ],
-                        ans: 0
-                    }
-                ]
-            },
-
-
-            "دينية": {
-
-                easy: [
-                    {
-                        q: "كم إنجيلاً في العهد الجديد؟",
-                        options: [
-                            "2",
-                            "3",
-                            "4",
-                            "5"
-                        ],
-                        ans: 2
-                    }
-                ],
-
-                medium: [
-                    {
-                        q: "من هو النبي الذي ابتلعته الحوت بحسب السفر المعروف باسمه؟",
-                        options: [
-                            "إشعياء",
-                            "يونان",
-                            "إرميا",
-                            "دانيال"
-                        ],
-                        ans: 1
-                    }
-                ],
-
-                hard: [
-                    {
-                        q: "ما اسم المجمع المسكوني الذي انعقد سنة 325م؟",
-                        options: [
-                            "أفسس",
-                            "خلقيدونية",
-                            "نيقية",
-                            "القسطنطينية"
-                        ],
-                        ans: 2
-                    }
-                ]
-            },
-
-
-            "آية أو كلمة معكوسة": {
-
-                easy: [
-                    {
-                        q: "اقلب كلمة «حَبّ» حرفياً: ما الشكل الناتج؟",
-                        options: [
-                            "بّح",
-                            "بحّ",
-                            "حّب",
-                            "ببح"
-                        ],
-                        ans: 0
-                    }
-                ],
-
-                medium: [
-                    {
-                        q: "إذا عكسنا «سدق» حرفياً، تصبح:",
-                        options: [
-                            "قدس",
-                            "قسد",
-                            "دقس",
-                            "سقد"
-                        ],
-                        ans: 0
-                    }
-                ],
-
-                hard: [
-                    {
-                        q: "عند عكس الحروف في كلمة «قدس»، ما الناتج؟",
-                        options: [
-                            "سدق",
-                            "دقس",
-                            "قسد",
-                            "سقد"
-                        ],
-                        ans: 0
-                    }
-                ]
             }
 
         };
@@ -1359,7 +1618,11 @@
         GAME STATE
         ================================ */
 
-        let currentScore = 0;
+        let teamScores = { 1: 0, 2: 0 };
+
+        let pendingPoints = 0;
+
+        let selectedRound = "round1";
 
         let selectedCategory = "";
 
@@ -1373,9 +1636,16 @@
 
         let questionAnswered = false;
 
-        const categoryProgress = {};
+        /* Track state per round separately */
+        const roundProgress = {
+            round1: {},
+            round2: {}
+        };
 
-        const categoryButtons = {};
+        const roundCategoryButtons = {
+            round1: {},
+            round2: {}
+        };
 
         const pointsMap = {
             easy: 10,
@@ -1389,6 +1659,11 @@
             hard: "صعب"
         };
 
+        const roundNameMap = {
+            round1: "الجولة الأولى",
+            round2: "الجولة الثانية"
+        };
+
 
         /* ================================
         INITIALIZATION
@@ -1396,11 +1671,26 @@
 
         window.onload = () => {
 
-            initCategories();
+            initRoundProgressState();
 
             updateScoreDisplays();
 
         };
+
+
+        function initRoundProgressState() {
+
+            ['round1', 'round2'].forEach(r => {
+
+                Object.keys(gameDataRounds[r]).forEach(cat => {
+
+                    roundProgress[r][cat] = new Set();
+
+                });
+
+            });
+
+        }
 
 
         /* ================================
@@ -1423,19 +1713,82 @@
 
 
         /* ================================
+        ROUNDS SELECTION & RETURN
+        ================================ */
+
+        function selectRound(roundKey) {
+
+            selectedRound = roundKey;
+
+            document.getElementById('round-badge').textContent = `${roundNameMap[roundKey]} — اختر الفئة`;
+
+            renderCategoriesForRound();
+
+            navigateTo('categories-screen');
+
+        }
+
+        function returnToRounds() {
+
+            teamScores = { 1: 0, 2: 0 };
+
+            updateScoreDisplays();
+
+            navigateTo('rounds-screen');
+
+        }
+
+
+        /* ================================
         SCORE
         ================================ */
 
         function updateScoreDisplays() {
 
             document
-                .querySelectorAll('.score-val')
+                .querySelectorAll('.score-team1')
                 .forEach(el => {
 
                     el.textContent =
-                        currentScore;
+                        teamScores[1];
 
                 });
+
+            document
+                .querySelectorAll('.score-team2')
+                .forEach(el => {
+
+                    el.textContent =
+                        teamScores[2];
+
+                });
+
+        }
+
+
+        /* ================================
+        TEAM CHOICE MODAL
+        ================================ */
+
+        function showTeamChoiceModal(points) {
+
+            pendingPoints = points;
+
+            document.getElementById('modal-points').textContent = points;
+
+            document.getElementById('team-choice-modal').classList.add('active');
+
+        }
+
+        function assignPoints(teamNum) {
+
+            teamScores[teamNum] += pendingPoints;
+
+            pendingPoints = 0;
+
+            document.getElementById('team-choice-modal').classList.remove('active');
+
+            updateScoreDisplays();
 
         }
 
@@ -1444,7 +1797,7 @@
         CATEGORIES
         ================================ */
 
-        function initCategories() {
+        function renderCategoriesForRound() {
 
             const grid =
                 document.getElementById(
@@ -1453,7 +1806,9 @@
 
             grid.innerHTML = "";
 
-            Object.keys(gameData).forEach(cat => {
+            const roundData = gameDataRounds[selectedRound];
+
+            Object.keys(roundData).forEach(cat => {
 
                 const btn =
                     document.createElement(
@@ -1464,15 +1819,22 @@
 
                 btn.textContent = cat;
 
+                const isCompleted = roundProgress[selectedRound][cat].size === 3;
+
+                if (isCompleted) {
+
+                    btn.classList.add('used');
+
+                    btn.disabled = true;
+
+                }
+
                 btn.onclick = () =>
                     selectCategory(cat);
 
                 grid.appendChild(btn);
 
-                categoryProgress[cat] =
-                    new Set();
-
-                categoryButtons[cat] = btn;
+                roundCategoryButtons[selectedRound][cat] = btn;
 
             });
 
@@ -1487,7 +1849,7 @@
                 .getElementById(
                     'diff-category-name'
                 )
-                .textContent = cat;
+                .textContent = `${roundNameMap[selectedRound]} | ${cat}`;
 
             document
                 .querySelectorAll(
@@ -1501,7 +1863,7 @@
                         'hard';
 
                     const done =
-                        categoryProgress[cat]
+                        roundProgress[selectedRound][cat]
                             .has(diff);
 
                     btn.classList.toggle(
@@ -1541,24 +1903,28 @@
 
             chosenBtn.disabled = true;
 
-            categoryProgress[selectedCategory]
+            roundProgress[selectedRound][selectedCategory]
                 .add(diff);
 
             if (
-                categoryProgress[selectedCategory]
+                roundProgress[selectedRound][selectedCategory]
                     .size === 3
             ) {
 
                 const catBtn =
-                    categoryButtons[
+                    roundCategoryButtons[selectedRound][
                         selectedCategory
                     ];
 
-                catBtn.classList.add(
-                    'used'
-                );
+                if (catBtn) {
 
-                catBtn.disabled = true;
+                    catBtn.classList.add(
+                        'used'
+                    );
+
+                    catBtn.disabled = true;
+
+                }
 
             }
 
@@ -1578,7 +1944,8 @@
         function setupQuestionSlide() {
 
             const qData =
-                gameData[selectedCategory]
+                gameDataRounds[selectedRound]
+                    [selectedCategory]
                     [selectedDifficulty]
                     [selectedQuestionIndex];
 
@@ -1588,7 +1955,7 @@
                     'q-breadcrumb'
                 )
                 .textContent =
-                `${selectedCategory} | ${diffTextMap[selectedDifficulty]} (${pointsMap[selectedDifficulty]} نقطة)`;
+                `${roundNameMap[selectedRound]} | ${selectedCategory} | ${diffTextMap[selectedDifficulty]} (${pointsMap[selectedDifficulty]} نقطة)`;
 
 
             document
@@ -1718,7 +2085,8 @@
 
 
             const qData =
-                gameData[selectedCategory]
+                gameDataRounds[selectedRound]
+                    [selectedCategory]
                     [selectedDifficulty]
                     [selectedQuestionIndex];
 
@@ -1739,12 +2107,11 @@
                     'correct'
                 );
 
-                currentScore +=
+                showTeamChoiceModal(
                     pointsMap[
                         selectedDifficulty
-                    ];
-
-                updateScoreDisplays();
+                    ]
+                );
 
             }
 
@@ -1783,7 +2150,8 @@
 
 
             const qData =
-                gameData[selectedCategory]
+                gameDataRounds[selectedRound]
+                    [selectedCategory]
                     [selectedDifficulty]
                     [selectedQuestionIndex];
 
@@ -1822,7 +2190,8 @@
 
 
             const qData =
-                gameData[selectedCategory]
+                gameDataRounds[selectedRound]
+                    [selectedCategory]
                     [selectedDifficulty]
                     [selectedQuestionIndex];
 
