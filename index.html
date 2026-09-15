@@ -227,6 +227,23 @@
             color: var(--cream);
         }
 
+        .btn-add-time {
+            background: linear-gradient(145deg, #3B82F6, #1D4ED8);
+            color: var(--cream);
+            border: 1.5px solid var(--sage);
+            padding: 7px 16px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .btn-add-time:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35);
+        }
+
         .btn-start-timer {
             background: linear-gradient(145deg, #4C8B5E, #356B41);
             color: var(--cream);
@@ -395,6 +412,19 @@
             box-shadow:
                 0 10px 25px rgba(10, 41, 71, 0.5),
                 0 0 20px rgba(211, 212, 192, 0.4);
+        }
+
+        .btn-answer {
+            background: linear-gradient(145deg, #10B981, #059669);
+            color: #ffffff;
+            border-color: #A7F3D0;
+        }
+
+        .btn-answer:hover:not(:disabled) {
+            background: linear-gradient(145deg, #059669, #047857) !important;
+            color: #ffffff !important;
+            border-color: #ECFDF5 !important;
+            box-shadow: 0 8px 18px rgba(16, 185, 129, 0.45) !important;
         }
 
         .game-title {
@@ -849,9 +879,9 @@
             <!-- TIMER -->
             <div class="timer-section">
                 <div class="timer-duration-controls" id="timer-duration-controls">
-                    <button class="btn-duration" data-duration="30" onclick="setTimerDuration(30)">30 ثانية</button>
-                    <button class="btn-duration" data-duration="45" onclick="setTimerDuration(45)">45 ثانية</button>
-                    <button class="btn-duration" data-duration="60" onclick="setTimerDuration(60)">دقيقة</button>
+                    <button class="btn-duration active" data-duration="30" onclick="setTimerDuration(30)">30 ثانية</button>
+                    <button class="btn-add-time" onclick="addExtraTime(15)">⏳ +15 ثانية</button>
+                    <button class="btn-add-time" onclick="addExtraTime(30)">⏳ +30 ثانية</button>
                     <button class="btn-start-timer" id="start-timer-btn" onclick="startTimer()">▶ ابدأ الوقت</button>
                     <button class="btn-pause-timer" id="pause-timer-btn" onclick="pauseResumeTimer()" disabled>⏸ إيقاف مؤقت</button>
                 </div>
@@ -891,6 +921,9 @@
 
             <!-- CONTROLS -->
             <div class="question-controls">
+                <button class="btn btn-answer" onclick="revealAnswer()">
+                    💡 الإجابة الصحيحة
+                </button>
                 <button class="btn" onclick="navigateTo('difficulty-screen')">
                     العودة للمستوى
                 </button>
@@ -1005,8 +1038,8 @@
                 },
                 "طقس و قبطي": {
                     easy: [{ q: "ما اسم الزيت المقدس المستخدم في جحد الشيطان قبل المعمودية؟", ans: "زيت الغاليلاون (زيت الفرح)" }],
-                    medium: [{ q: "ما هو هذا اللحن؟", ans: "لحن قبطي" }],
-                    hard: [{ q: "سمو إنيستي نيم نيسيم: ماري بيكناي تيكهيريني أوي إنصوبت إمبيكلاؤس: سوتي إممون أووه ناي نان. الجملة دي بتتقال من 10 إيه إلي 10 إيه؟", ans: "بابك-طوبة" }]
+                    medium: [{ q: "ما هو هذا اللحن؟", ans: "بمسرتك يا الله" }],
+                    hard: [{ q: "سمو إنيستي نيم نيسيم: ماري بيكناي تيكهيريني أوي إنصوبت إمبيكلاؤس: سوتي إممون أووه ناي نان. الجملة دي بتتقال من 10 إيه إلي 10 إيه؟", ans: "بابة-طوبة" }]
                 },
                 "ديني كتابي و تاريخ الكنيسة": {
                     easy: [{ q: "من هو الفيلسوف الشهيد في القرن الثاني صاحب كتابي الدفاع الأول و الدفاع الثاني؟", ans: "القديس يوستينوس الشهيد" }],
@@ -1211,9 +1244,6 @@
             }
 
             document.querySelectorAll('#open-controls button').forEach(btn => { btn.disabled = true; });
-
-            // Automatically reveal the correct answer
-            revealAnswer();
         }
 
         function setTimerDuration(seconds) {
@@ -1223,6 +1253,25 @@
             });
             if (!timerInterval) {
                 resetTimerDisplay();
+            }
+        }
+
+        function addExtraTime(seconds) {
+            if (questionAnswered) return;
+            timeLeft += seconds;
+            selectedTimerDuration += seconds;
+
+            const timerBar = document.getElementById('timer-bar');
+            const timerNumber = document.getElementById('timer-number');
+
+            timerNumber.textContent = `⏰ ${timeLeft}`;
+            timerBar.style.width = `${Math.min(100, (timeLeft / selectedTimerDuration) * 100)}%`;
+
+            if (!timerInterval && !isTimerPaused) {
+                const pauseBtn = document.getElementById('pause-timer-btn');
+                pauseBtn.disabled = false;
+                pauseBtn.textContent = '⏸ إيقاف مؤقت';
+                runTimerInterval();
             }
         }
 
@@ -1251,7 +1300,7 @@
             timerInterval = setInterval(() => {
                 timeLeft--;
                 timerNumber.textContent = `⏰ ${timeLeft}`;
-                timerBar.style.width = `${(timeLeft / selectedTimerDuration) * 100}%`;
+                timerBar.style.width = `${Math.max(0, (timeLeft / selectedTimerDuration) * 100)}%`;
 
                 if (timeLeft <= 0) {
                     clearInterval(timerInterval);
@@ -1313,20 +1362,18 @@
 
         function handleTimeout() {
             if (questionAnswered) return;
-            questionAnswered = true;
 
             const qData = gameDataRounds[selectedRound][selectedCategory][selectedDifficulty][selectedQuestionIndex];
 
-            if (!qData.options || qData.options.length === 0) {
-                document.querySelectorAll('#open-controls button').forEach(btn => { btn.disabled = true; });
-                // Show the answer on timeout
-                revealAnswer();
-                return;
+            // Multiple choice handling on timeout
+            if (qData.options && qData.options.length > 0) {
+                const choices = document.querySelectorAll('.btn-choice');
+                if (typeof qData.ans === 'number') {
+                    choices[qData.ans].classList.add('correct');
+                }
+                disableAllChoices();
             }
-
-            const choices = document.querySelectorAll('.btn-choice');
-            choices[qData.ans].classList.add('correct');
-            disableAllChoices();
+            // Note: Open question buttons remain enabled after timeout as requested
         }
 
         function revealAnswer() {
