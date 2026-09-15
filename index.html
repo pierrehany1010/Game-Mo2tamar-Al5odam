@@ -891,9 +891,6 @@
 
             <!-- CONTROLS -->
             <div class="question-controls">
-                <button class="btn" id="reveal-btn" onclick="revealAnswer()">
-                    الإجابة الصحيحة
-                </button>
                 <button class="btn" onclick="navigateTo('difficulty-screen')">
                     العودة للمستوى
                 </button>
@@ -1176,7 +1173,6 @@
 
             const choicesContainer = document.getElementById('choices-container');
             const openControls = document.getElementById('open-controls');
-            const revealBtn = document.getElementById('reveal-btn');
 
             choicesContainer.innerHTML = "";
             questionAnswered = false;
@@ -1185,12 +1181,10 @@
 
             if (isOpenQuestion) {
                 choicesContainer.style.display = 'none';
-                revealBtn.style.display = '';
                 openControls.style.display = 'flex';
                 openControls.querySelectorAll('button').forEach(btn => { btn.disabled = false; });
             } else {
                 choicesContainer.style.display = '';
-                revealBtn.style.display = '';
                 openControls.style.display = 'none';
 
                 qData.options.forEach((opt, idx) => {
@@ -1217,6 +1211,9 @@
             }
 
             document.querySelectorAll('#open-controls button').forEach(btn => { btn.disabled = true; });
+
+            // Automatically reveal the correct answer
+            revealAnswer();
         }
 
         function setTimerDuration(seconds) {
@@ -1322,6 +1319,8 @@
 
             if (!qData.options || qData.options.length === 0) {
                 document.querySelectorAll('#open-controls button').forEach(btn => { btn.disabled = true; });
+                // Show the answer on timeout
+                revealAnswer();
                 return;
             }
 
