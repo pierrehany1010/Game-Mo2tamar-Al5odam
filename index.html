@@ -800,10 +800,6 @@
 
             <div class="grid-container grid-categories" id="categories-grid"></div>
 
-            <button class="btn" style="margin-top: 30px;" onclick="returnToRounds()">
-                العودة للجولات
-            </button>
-
             <button class="btn" style="margin-top: 15px;" onclick="showRoundWinner()">
                 🏆 الفائز
             </button>
@@ -1244,6 +1240,8 @@
             }
 
             document.querySelectorAll('#open-controls button').forEach(btn => { btn.disabled = true; });
+
+            revealAnswer();
         }
 
         function setTimerDuration(seconds) {
@@ -1375,6 +1373,7 @@
             }
             // Note: Open question buttons remain enabled after timeout as requested
         }
+
 
         function revealAnswer() {
             clearInterval(timerInterval);
